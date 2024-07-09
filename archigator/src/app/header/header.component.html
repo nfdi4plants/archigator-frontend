@@ -1,0 +1,68 @@
+<div class="navbar-padding">
+
+</div>
+
+<nav aria-label="main navigation" class="navbar custom-navbar" role="navigation">
+
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{user?.project_url}}">
+      <button class="button is-white is-middle back-button">
+        <span class="icon">
+          <i class="fas fa-arrow-left"></i>
+        </span>
+      </button>
+    </a>
+  </div>
+
+  <!--    <div class="navbar-brand">-->
+  <!--        <a class="navbar-item" href="https://bulma.io">-->
+  <!--            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">-->
+  <!--        </a>-->
+  <!--    </div>-->
+
+  <div class="navbar-brand">
+    <div class="navbar-item non-responsive">
+      <div class="navbar-item-content">
+        <!-- Title -->
+        <h1 class="navbar-title">DataPLANT Publication Service</h1>
+      </div>
+      <!-- Other navbar items or elements -->
+    </div>
+  </div>
+
+  <div class="navbar-menu" id="navbarBasicExample">
+    <div class="navbar-start">
+
+
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown is-hoverable" *ngIf="user">
+        <a class="navbar-link">
+          <figure class="image">
+            <fa-icon *ngIf="loading" [icon]="faSpinner" [size]="'2x'" [spin]="true" class="spinner"></fa-icon>
+            <img *ngIf="!loading" alt="User Avatar" class="is-rounded" src="{{user.avatar_url}}">
+          </figure>
+          <!--                    <span class="icon">-->
+          <!--                        <i class="fas fa-angle-down"></i>-->
+          <!--                    </span>-->
+        </a>
+        <div class="navbar-dropdown is-right">
+          <a class="navbar-item">
+            <!--                        <div class="name">{{user?.username}}</div>-->
+            <!--                      <a class="navbar-item">{{user?.username}}</a>-->
+            <a class="navbar-item" href="{{user.web_url}}">
+              {{user.username}}
+            </a>
+            <!--                        <div class="user-tag">UserTag</div>-->
+          </a>
+          <!--                    <hr class="navbar-divider">-->
+          <!--                    <a class="navbar-item">Profile</a>-->
+          <!--                    <a class="navbar-item">Settings</a>-->
+          <!--                    <a class="navbar-item">Logout</a>-->
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</nav>

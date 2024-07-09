@@ -1,0 +1,126 @@
+<ng-template #loading>
+  <span>loading</span>
+</ng-template>
+
+<ng-template #noImage>
+  <fa-icon class="noImage" [icon]="faImage"></fa-icon>
+</ng-template>
+
+<!--<div class="side-card user-card">-->
+<!--  <div class="upper-area">-->
+<!--    <div class="avatar-container">-->
+<!--      <img id="checkout-avatar"-->
+<!--           src="{{user?.avatar_url}}">-->
+<!--      <fa-icon class="spinner" [size]="'2x'" [icon]="faSpinner" [spin]="true" *ngIf="ownerLoading |async "></fa-icon>-->
+<!--    </div>-->
+<!--    <div class="meta">-->
+<!--      <div>-->
+<!--        <span>User</span>-->
+<!--        <span id="checkout-username">{{user?.name}}</span>-->
+
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--  <div class="user-bottom">-->
+<!--    <span id="checkout-username">-->
+<!--      <fa-icon [icon]="faUser"></fa-icon>-->
+<!--      <p>{{user?.username}}</p>-->
+<!--    </span>-->
+<!--    <span id="checkout-mail">-->
+<!--      <fa-icon [icon]="faEnvelope"></fa-icon>-->
+<!--      <p>{{user?.email}}</p>-->
+<!--    </span>-->
+<!--    <span class="bottom-button">-->
+<!--       <a href="{{user?.web_url}}" class="button is-primary is-normal is-responsive">Gitlab Profile</a>-->
+<!--    </span>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="side-card is-totals">
+  <div class="upper-area">
+    <div class="pravatar-container">
+      <img src="{{project?.avatar_url}}" *ngIf="project?.avatar_url">
+      <fa-icon class="" [size]="'3x'" [icon]="faImage" *ngIf="pravatar_url.value == 'none'"></fa-icon>
+      <fa-icon class="spinner" [size]="'2x'" [icon]="faSpinner" [spin]="true" *ngIf="projectLoading"></fa-icon>
+    </div>
+    <div class="meta">
+      <div>
+        <span>Source of Publication</span>
+        <span id="project-name">{{project?.name}}</span>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!--    <h3 class="info-title">Project Information</h3>-->
+  <!--    <div class="payment-block">-->
+  <!--        <span>Name</span>-->
+  <!--        <div *ngIf="project?.name; else loading">-->
+  <!--            <span id="project_name">{{project?.name}}</span>-->
+  <!--        </div>-->
+  <!--        &lt;!&ndash;    <span id="checkout-subtotal-value">{{project?.name}}</span>&ndash;&gt;-->
+  <!--    </div>-->
+  <div class="payment-block">
+<!--    <span>Status</span>-->
+    <span></span>
+    <span id="checkout-shipping-value">
+      <div *ngIf="project?.status == 'success'">
+         <span class="tag is-success">Ready</span>
+      </div>
+      <ng-template #failure>
+           <span class="tag is-danger">Failure</span>
+      </ng-template>
+
+       <div *ngIf="project?.status == 'failed'">
+         <span class="tag is-danger">Not Ready</span>
+      </div>
+
+    </span>
+  </div>
+</div>
+
+<div class="side-card error-card is-totals" *ngIf="project?.status == 'failed'">
+  <h3 class="info-title">Error</h3>
+  <p>
+    The project pipeline has been failed.
+  </p>
+  <p>Please correct the pipeline errors before publishing the project.
+  </p>
+</div>
+
+<div class="side-card error-card is-totals" *ngIf="user?.is_member == false">
+  <h3 class="info-title">Error</h3>
+  <p>
+    You must be a member of the project to be able to publish a project.
+  </p>
+</div>
+
+<label class="checkbox">
+  <input type="checkbox" [(ngModel)]="termsChecked">
+  I agree to the <a href="#"> Terms & Conditions</a>
+</label>
+
+<label class="checkbox">
+  <input type="checkbox" [(ngModel)]="authorsChecked">
+  I made sure that all corresponding authors are listed
+</label>
+
+
+<div class="side-action">
+  <!--    <button id="checkout-next" class="button is-primary is-fullwidth is-rounded">Publish</button>-->
+  <button id="checkout-next" class="button is-primary is-fullwidth is-rounded"
+          [disabled]="(isUserNoMember |async)|| (isPipelineFailed |async) || (!(termsChecked && authorsChecked))" (click)="publish()">
+    <fa-icon class="spinner" [icon]="faSpinner" [spin]="true" *ngIf="spinLoader"></fa-icon>
+    <p class="button-text">Publish</p>
+  </button>
+  <!--    <div *ngIf="pipeline?.status == 'success'">-->
+  <!--        <button id="checkout-next" class="button is-fullwidth is-rounded" disabled>Publish</button>-->
+  <!--    </div>-->
+
+</div>
+
+
+<app-pipeline-tests></app-pipeline-tests>

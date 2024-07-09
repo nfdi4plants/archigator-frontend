@@ -1,0 +1,33 @@
+p {
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    font-weight: 600;
+}
+
+body {
+    height: 70vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    /*flex-direction: column;*/
+}
+
+.welcome-container {
+    text-align: center;
+    /*border: 1px solid #ccc; !* Optional: Just to see the container's boundaries *!*/
+    padding: 20px;
+}
+
+img {
+    width:180px;
+    margin-bottom: 80px;
+}
+
+.instruction-text{
+    padding-top: 30px;
+    text-align: center;
+    font-size: 19px;
+}

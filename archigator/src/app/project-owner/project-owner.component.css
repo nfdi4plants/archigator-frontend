@@ -1,0 +1,74 @@
+.profile-card-user {
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.profile-card-name {
+    font-size: 1.7em;
+    /*padding-left:30px;*/
+    font-weight: 600;
+}
+
+.profile-card-username {
+    font-size: 1.5em;
+    /*padding-left:30px;*/
+    font-weight: 300;
+}
+
+.profile-header{
+    background-color: #2D3E50;
+    align-items: center;
+    height: 70px;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: 600;
+    color: white;
+}
+
+.card{
+    background-color: #4FB3D9;
+}
+
+.has-same-height .card {
+    /*height: 420px;*/
+    overflow: hidden;
+}
+
+.card-content h3 {
+    text-align: center;
+}
+
+.table-profile td,
+th {
+    border: none !important;
+}
+
+.table-profile td:first-of-type {
+    font-weight: bold;
+}
+
+.skills-content .media {
+    margin: 0 !important;
+    padding: 4px !important;
+    border: 0 !important;
+}
+
+.skills-content .progress {
+    height: 4px !important;
+}
+
+.custom-tags {
+    text-align: center !important;
+    display: block;
+}
+
+.portfolio-container .card {
+    margin-bottom: 2em;
+}
+
+.section-heading {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 6em;
+}

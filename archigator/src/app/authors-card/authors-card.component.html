@@ -1,0 +1,57 @@
+<!--<ng-template #error>-->
+<!--  <span>No Metadata available</span>-->
+<!--</ng-template>-->
+
+<!--<div class="side-card is-totals">-->
+<!--    <h3 class="info-title">Authors</h3>-->
+
+<!--    <fa-icon class="spinner" [size]="'2x'" [icon]="faSpinner" [spin]="true" *ngIf="loading"></fa-icon>-->
+
+<!--    &lt;!&ndash;  <div *ngIf="creators?.length;else error"></div>&ndash;&gt;-->
+
+<!--    <div *ngIf="error">No metadata available</div>-->
+
+<!--    <div class="payment-block" *ngFor="let creator of creators">-->
+<!--        <span>Name</span>-->
+<!--        <span id="author_name">{{creator.person_or_org.family_name}}</span>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+
+<div class="tests-table">
+
+
+    <div class="flex-table-header">
+        <span class="heading"><span>Authors</span></span>
+        <!--    <span class="quantity">Message</span>-->
+    </div>
+
+
+    <div class="info" *ngIf="creators">
+
+        <p>
+            This Author List was created using the Contacts section of the Investigation File.</p>
+        <p>
+            Please make sure that all authors responsible for the publication are present.
+        </p>
+    </div>
+
+
+    <fa-icon class="spinner" [size]="'2x'" [icon]="faSpinner" [spin]="true" *ngIf="loading"></fa-icon>
+
+
+    <div *ngIf="error">No Authors available</div>
+
+
+    <div class="flex-table-item" *ngFor="let creator of creators">
+
+
+        <div class="message-title">
+            <span class="has-title">{{creator.person_or_org.name}}</span>
+        </div>
+
+    </div>
+
+
+</div>

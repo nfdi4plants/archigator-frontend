@@ -1,0 +1,56 @@
+.checkout-side{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: #DEDEDE;
+  z-index: 5;
+  width: 460px;
+}
+
+.side-inner {
+  padding: 20px 30px 80px;
+  background-color: #DEDEDE;
+  overflow-x: hidden !important;
+}
+
+.checkout-main{
+  width: calc(100% - 460px);
+  height: 100%;
+}
+
+.checkout-wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 60px;
+  background-color: #F0F0F0;
+}
+
+.checkout-wrapper .checkout-main .checkout-container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+nfdi-footer{
+  z-index:9999;
+  position:relative;
+
+}
+
+
+@media all and (max-width: 900px) {
+  .checkout-side {
+    position: relative;
+    width: 100%;
+  }
+  .checkout-main {
+    width: 100%;
+
+  }
+  .checkout-wrapper{
+    flex-direction: column;
+  }
+}

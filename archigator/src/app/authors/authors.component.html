@@ -1,0 +1,59 @@
+<div class="title-header">
+  <span class="heading"><span>Authors</span></span>
+  <!--    <span class="quantity">Message</span>-->
+</div>
+
+
+<fa-icon class="spinner" [size]="'2x'" [icon]="faSpinner" [spin]="true" *ngIf="loading"></fa-icon>
+
+<div class="authors-container">
+
+  <div class="side-card user-card" *ngFor="let creator of creators">
+    <div class="upper-area">
+      <div class="avatar-container">
+        <img id="checkout-avatar"
+             src="">
+        <!--                <fa-icon class="spinner" [size]="'2x'" [icon]="faSpinner" [spin]="true"></fa-icon>-->
+        <fa-icon [icon]="faUser" [size]="'2x'"></fa-icon>
+      </div>
+      <div class="meta">
+        <div>
+          <span>Author</span>
+          <span id="checkout-username">{{creator.person_or_org.name}}</span>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="user-bottom">
+      <!--    <span id="checkout-username">-->
+      <!--      <fa-icon [icon]="faUser"></fa-icon>-->
+      <!--      <p>author name</p>-->
+      <!--    </span>-->
+      <span>
+      <fa-icon [icon]="faEnvelope"></fa-icon>
+      <p>{{ getEmail(creator) }}</p>
+    </span>
+      <span>
+      <fa-icon [icon]="faOrcid"></fa-icon>
+      <p>{{getOrcid(creator)}}</p>
+    </span>
+<!--      <span>-->
+<!--      <fa-icon [icon]="faBuildingUser"></fa-icon>-->
+<!--      <p>affiliation</p>-->
+<!--    </span>-->
+<!--      <div class="message-affiliations">-->
+<!--        <ul>-->
+<!--          <li *ngFor="let affiliation of creator.affiliations">{{ affiliation.name }}</li>-->
+<!--        </ul>-->
+
+        <span *ngFor="let affiliation of creator.affiliations">
+      <fa-icon [icon]="faBuildingUser"></fa-icon>
+      <p>{{ affiliation.name }}</p>
+    </span>
+
+<!--      </div>-->
+    </div>
+  </div>
+
+</div>

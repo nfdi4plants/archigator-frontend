@@ -1,0 +1,92 @@
+.authors-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  padding-bottom: 30px;
+}
+
+
+.side-card {
+  /*width: 100%;*/
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #cececece;
+  padding: 20px;
+  /*margin-bottom: 20px;*/
+  min-width: 250px;
+  /*max-width: 350px;*/
+  word-wrap: anywhere;
+}
+
+.side-card.user-card {
+  /*display: flex;*/
+  align-items: center;
+}
+
+.upper-area {
+  display: flex;
+}
+
+
+.avatar-container {
+  /*position: relative;*/
+  height: 64px;
+  width: 64px;
+  /*min-width: 44px;*/
+}
+
+.avatar-container img {
+  display: block;
+  border-radius: 90%;
+}
+
+.meta {
+  width: 100%;
+  margin-left: 12px;
+}
+
+.meta span {
+  display: block;
+}
+
+.meta span:first-child {
+  font-size: .7rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.meta span:nth-child {
+  font-size: .9rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  text-transform: uppercase;
+}
+
+.user-bottom > span {
+  display: flex;
+}
+
+.user-bottom span > fa-icon {
+  width: 25px;
+}
+
+.bottom-button {
+  padding-top: 10px;
+}
+
+.title-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 4px;
+  padding-top: 40px;
+}
+
+.title-header span {
+  /*font-family: Montserrat;*/
+  font-size: .7rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}

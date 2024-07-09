@@ -1,0 +1,46 @@
+<!--<ng-template #loading>-->
+<!--    <span>loading</span>-->
+<!--</ng-template>-->
+
+<ng-template #failure>
+  <span class="tag is-danger">failed</span>
+</ng-template>
+
+<div class="tests-table">
+
+<!--  <div class="flex-table-header">-->
+<!--    <span *ngIf="error" class="heading"><span>Tests</span></span>-->
+<!--    &lt;!&ndash;    <span class="quantity">Message</span>&ndash;&gt;-->
+<!--  </div>-->
+
+
+  <fa-icon *ngIf="loading" [icon]="faSpinner" [size]="'2x'" [spin]="true" class="spinner"></fa-icon>
+
+
+  <!--  <div *ngIf="error">No tests available</div>-->
+
+
+  <div *ngFor="let test of tests" class="flex-table-item product-container">
+
+    <input class="title" id="{{test?.name}}" type="checkbox">
+
+    <label class="tab-label" for="{{test?.name}}">
+      <div class="message-status">
+        <div *ngIf="test?.status == 'success'; else failure" class="ngif">
+          <span class="tag is-success">{{test?.status}}</span>
+        </div>
+
+      </div>
+      <div class="message-title">
+        <span class="has-title">{{test?.name}}</span>
+      </div>
+    </label>
+
+    <div class="tab-content">
+      {{test?.system_output}}
+    </div>
+
+  </div>
+
+
+</div>

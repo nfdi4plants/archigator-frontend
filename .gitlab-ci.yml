@@ -1,0 +1,19 @@
+stages:
+  - publish
+
+variables:
+  TAG_LATEST: $CI_REGISTRY_IMAGE:latest
+  TAG_COMMIT: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  GIT_SUBMODULE_STRATEGY: recursive
+
+publish:
+  image: docker:latest
+  stage: publish
+  services:
+    - docker:dind
+  script:
+    - ls -lah
+    - docker build -t $TAG_COMMIT -t $TAG_LATEST .
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push $TAG_COMMIT
+    - docker push $TAG_LATEST

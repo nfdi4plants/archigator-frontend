@@ -1,0 +1,180 @@
+<div class="checkout-wrapper">
+
+  <div class="checkout-main">
+
+    <div *ngIf="error">Order does not exist anymore....</div>
+
+
+    <article *ngIf="!error" class="ticket">
+      <header class="ticket__wrapper">
+
+        <div class="ticket__header">
+          <img alt="Logo"
+               src="https://github.com/nfdi4plants/Branding/raw/master/logos/Swobup/logo/logo-blue.png"
+               style="width:42px;height:42px;">
+          <div class="header-text">
+            Publication Request
+          </div>
+        </div>
+      </header>
+      <div class="ticket__divider">
+        <div class="ticket__notch"></div>
+        <div class="ticket__notch ticket__notch--right"></div>
+      </div>
+      <div class="ticket__body">
+
+        <section class="ticket__section">
+          <div *ngIf="order?.status === 'created'" class="progress-container">
+            <p>Status</p>
+            <span class="tag is-info">Incomplete</span>
+          </div>
+          <div *ngIf="order?.status === 'submitted'" class="progress-container">
+            <p>Status</p>
+            <span class="tag is-warning">Waiting</span>
+          </div>
+          <div *ngIf="order?.status === 'accepted'" class="progress-container">
+            <p>Status</p>
+            <span class="tag is-success">Accepted</span>
+          </div>
+          <div *ngIf="order?.status === 'declined'" class="progress-container">
+            <p>Status</p>
+            <span class="tag is-danger">Cancelled</span>
+          </div>
+          <div *ngIf="order?.status === 'cancelled'" class="progress-container">
+            <p>Status</p>
+            <span class="tag is-danger">Cancelled</span>
+          </div>
+          <div *ngIf="order?.status === 'expired'" class="progress-container">
+            <p>Status</p>
+            <span class="tag is-warning">Expired</span>
+          </div>
+        </section>
+
+        <section class="ticket__section" *ngIf="order?.status === 'created'">
+          <p>The project has been created, but it seems that not all data is available correctly and is therefore marked
+            as incomplete.</p>
+          <!--                    <h3>The status can be tracked via this receipt</h3>-->
+        </section>
+
+        <section class="ticket__section" *ngIf="order?.status !== 'created'">
+          <p>The following project has been submitted.The status can be tracked via this receipt.</p>
+          <!--                    <h3>The status can be tracked via this receipt</h3>-->
+        </section>
+
+
+        <!--        <div class="divider">-->
+        <!--        </div>-->
+
+        <section class="ticket__section">
+          <h3>Preliminary Publication ID</h3>
+          <!--      <p>InvenioTestARC</p>-->
+          <p>{{order?.order_id}}</p>
+        </section>
+        <section class="ticket__section">
+          <h3>Investigation</h3>
+          <!--      <p>InvenioTestARC</p>-->
+          <p>{{order?.investigation_name}}</p>
+        </section>
+        <!--                <section class="ticket__section">-->
+        <!--                    <h3>Project Owner</h3>-->
+        <!--                    <p>{{order?.project_owner}}</p>-->
+        <!--                </section>-->
+      </div>
+      <div class="ticket__divider">
+        <div class="ticket__notch"></div>
+        <div class="ticket__notch ticket__notch--right"></div>
+      </div>
+      <!--            <div class="ticket__body">-->
+      <!--                <section class="ticket__section">-->
+      <!--                    <h3>Users will be informed by mail</h3>-->
+      <!--                </section>-->
+      <!--            </div>-->
+
+      <!--            <div class="ticket__divider">-->
+      <!--                <div class="ticket__notch"></div>-->
+      <!--                <div class="ticket__notch ticket__notch&#45;&#45;right"></div>-->
+      <!--            </div>-->
+
+      <div class="ticket__body">
+
+        <div class="headline">
+          <h3>Progress:</h3>
+        </div>
+
+        <div class='wrapper'>
+
+          <div *ngIf="order?.comments?.length === 0">
+            No progress available yet
+          </div>
+
+
+          <div class='steps' id='steps'>
+            <!--                        <div class='step'>-->
+            <!--                            <div class='number completed'>-->
+            <!--                            </div>-->
+            <!--                            <div class='info'>-->
+            <!--&lt;!&ndash;                                <p class='title'>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                    Project Submitted&ndash;&gt;-->
+            <!--&lt;!&ndash;                                </p>&ndash;&gt;-->
+            <!--                                <p class='text'>Project has been submitted, please wait for review.</p>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+
+
+            <div *ngFor="let comment of order?.comments; let last = last" class='step'>
+
+              <div [ngClass]="{'cancelled': last && !stepcolor, 'completed': last && stepcolor}"
+                   class='number completed'>
+
+                <div *ngIf="last && order?.status == 'accepted'">
+                  <svg title="check" viewBox="0 0 512 512" width="100">
+                    <path
+                      d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/>
+                  </svg>
+                </div>
+
+                <div *ngIf="last && order?.status == 'declined'">
+                  <svg title="fail" viewBox="0 0 329.26933 329" width="329">
+                    <path
+                      d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/>
+                  </svg>
+                </div>
+
+                <div *ngIf="last && order?.status == 'cancelled'">
+                  <svg title="fail" viewBox="0 0 329.26933 329" width="329">
+                    <path
+                      d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/>
+                  </svg>
+                </div>
+
+
+              </div>
+              <div class='info'>
+
+                <p *ngIf="last && order?.status == 'accepted'" class='title'>Submission Accepted</p>
+                <p *ngIf="last && (order?.status == 'cancelled' || order?.status == 'declined')"
+                   class='title'>
+                  Submission Denied</p>
+
+
+                <p class='text'>{{comment}}</p>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
+
+      <footer class="ticket__footer">
+        <button (click)="toDataHub()" [disabled]="!order?.web_url"
+                class="button is-primary is-fullwidth is-rounded" id="checkout-next">Back to DataHUB
+        </button>
+      </footer>
+    </article>
+
+
+  </div>
+</div>
