@@ -1,8 +1,13 @@
 <!--<app-header></app-header>-->
 
-<div class="checkout-wrapper" *ngIf="hasMetadata; else noMetadata">
+<div class="checkout-wrapper">
 
-    <div class="checkout-main">
+    <div *ngIf="loading" class="loading-spinner">
+        <!-- Placeholder for your spinner; you can replace it with your spinner design -->
+        <p>Loading...</p>
+    </div>
+
+    <div class="checkout-main" *ngIf="!loading && hasMetadata; else noMetadata">
 
         <div class="checkout-container">
 
@@ -35,7 +40,7 @@
 </div>
 
 <ng-template #noMetadata>
-    <div class="center-message">
+    <div *ngIf="error" class="center-message">
         Could not load metadata
     </div>
 </ng-template>

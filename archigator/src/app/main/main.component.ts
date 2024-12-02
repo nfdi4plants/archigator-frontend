@@ -20,6 +20,8 @@ import {Metadata} from "../shared/response";
 export class MainComponent implements OnInit{
 
     hasMetadata: boolean = false;
+    loading: boolean = true;
+    error: boolean = false;
 
     constructor(private oauthService: OAuthService,
                 private parameterService: ParametersService,
@@ -67,14 +69,19 @@ export class MainComponent implements OnInit{
     loadMetadata() {
         this.apiService.getMetadata().subscribe(
             (metadata: Metadata) => {
+                this.loading = false;
                 if (metadata) {
                     // Handle the logic here if metadata is not null or undefined
                     this.hasMetadata = true;
+                } else {
+                    this.error = true;
                 }
             },
             (error) => {
                 console.error('Failed to load metadata:', error);
-                this.hasMetadata = false;
+                // this.hasMetadata = false;
+                this.loading = false;
+                this.error = true;
             }
         );
     }
