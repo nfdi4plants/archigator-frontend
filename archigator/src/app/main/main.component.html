@@ -4,6 +4,7 @@
 
     <div *ngIf="loading" class="loading-spinner">
         <!-- Placeholder for your spinner; you can replace it with your spinner design -->
+        <fa-icon class="spinner" [size]="'2x'" [icon]="faSpinner" [spin]="true" *ngIf="loading"></fa-icon>
         <p>Loading...</p>
     </div>
 

@@ -8,6 +8,7 @@ import {first} from "rxjs/operators";
 import {ApiQueueService} from "../services/apiqueue.service";
 import {ApiService} from "../services/api.service";
 import {Metadata} from "../shared/response";
+import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 
 @Component({
@@ -221,5 +222,5 @@ export class MainComponent implements OnInit{
     }
 
 
-
+    protected readonly faSpinner = faSpinner;
 }
