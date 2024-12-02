@@ -38,6 +38,9 @@ export class CheckoutComponent implements OnInit {
   faSpinner = faSpinner;
   faImage = faImage;
 
+
+  errorMessage: string | null = null;
+
   projectLoading = true;
   // ownerLoading = true;
 
@@ -211,6 +214,10 @@ export class CheckoutComponent implements OnInit {
       },
       error: (error: any) => {
         console.error(error);
+        if (error.status === 403 || error.status === 422) {
+          console.log(`Error with status ${error.status}:`, error.message);
+          this.spinLoader = false;
+        }
       }
     });
   }
