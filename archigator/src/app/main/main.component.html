@@ -2,7 +2,7 @@
 
 <div class="checkout-wrapper">
 
-    <div *ngIf="loading" class="loading-spinner">
+    <div *ngIf="loading" class="checkout-main loading-spinner">
         <!-- Placeholder for your spinner; you can replace it with your spinner design -->
         <fa-icon class="spinner" [size]="'2x'" [icon]="faSpinner" [spin]="true" *ngIf="loading"></fa-icon>
         <p>Loading...</p>
@@ -41,7 +41,7 @@
 </div>
 
 <ng-template #noMetadata>
-    <div *ngIf="error" class="center-message">
+    <div *ngIf="error" class="checkout-main center-message">
         Could not load metadata
     </div>
 </ng-template>
