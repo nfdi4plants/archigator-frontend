@@ -216,6 +216,9 @@ export class CheckoutComponent implements OnInit {
         console.error(error);
         if (error.status === 403 || error.status === 422) {
           console.log(`Error with status ${error.status}:`, error.message);
+
+          this.errorMessage = `Error ${error.status}: ${error.message}`;
+
           this.spinLoader = false;
         }
       }
