@@ -6,6 +6,8 @@ import {ParametersService} from "../services/parameters.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {first} from "rxjs/operators";
 import {ApiQueueService} from "../services/apiqueue.service";
+import {ApiService} from "../services/api.service";
+import {Metadata} from "../shared/response";
 
 
 @Component({
@@ -17,11 +19,14 @@ import {ApiQueueService} from "../services/apiqueue.service";
 
 export class MainComponent implements OnInit{
 
+    hasMetadata: boolean = false;
+
     constructor(private oauthService: OAuthService,
                 private parameterService: ParametersService,
                 private route: ActivatedRoute,
                 private router: Router,
-                private apiQueue: ApiQueueService)
+                private apiQueue: ApiQueueService,
+                private apiService: ApiService)
     {
     }
 
@@ -53,8 +58,27 @@ export class MainComponent implements OnInit{
             this.router.navigate(["/welcome"])
         }
 
+        this.loadMetadata();
+
 
     }
+
+
+    loadMetadata() {
+        this.apiService.getMetadata().subscribe(
+            (metadata: Metadata) => {
+                if (metadata) {
+                    // Handle the logic here if metadata is not null or undefined
+                    this.hasMetadata = true;
+                }
+            },
+            (error) => {
+                console.error('Failed to load metadata:', error);
+                this.hasMetadata = false;
+            }
+        );
+    }
+
 
     async login(){
 
