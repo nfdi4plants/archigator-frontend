@@ -57,6 +57,15 @@
   }
 }
 
+.center-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* or a specific height */
+  font-size: 1.5em;
+  color: gray;
+}
+
 
 /*@media all and (max-width: 900px) {*/
 /*    .checkout-side {*/
