@@ -219,7 +219,7 @@ export class CheckoutComponent implements OnInit {
 
           const errDetail = error.error?.detail || 'An error occurred';
 
-          this.errorMessage = `Error ${error.status}: ${errDetail}`;
+          this.errorMessage = `${errDetail}`;
 
           this.spinLoader = false;
         }
